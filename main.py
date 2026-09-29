@@ -1,61 +1,53 @@
 import qrcode
 
-import sys
-
-
 
 def generate_basic_qr():
-    """Generates a standard black-and-white QR code."""
     print("\n--- Basic QR Code ---")
-    data = input("Enter the URL or text for the QR code: ").strip()
+    data = input("Enter the URL or text: ").strip()
     if not data:
-        print("Data cannot be empty. Returning to menu.")
+        print("Data cannot be empty.")
         return
 
-    filename = input("Enter the output filename (e.g., my_qr.png): ").strip()
+    filename = input("Enter filename (default: basic_qr.png): ").strip()
     if not filename:
         filename = "basic_qr.png"
-    if not filename.endswith('.png'):
-        filename += '.png'
-        
-    print("Generating...")
+    if not filename.endswith(".png"):
+        filename += ".png"
+
     img = qrcode.make(data)
     img.save(filename)
-    print(f"Success! Basic QR code saved as '{filename}' in the current directory.")
+    print(f"Saved to {filename}")
+
 
 def generate_custom_qr():
-    """Generates a QR code with custom colors, size, and error correction."""
     print("\n--- Custom QR Code ---")
-    data = input("Enter the URL or text for the QR code: ").strip()
+    data = input("Enter the URL or text: ").strip()
     if not data:
-        print("Data cannot be empty. Returning to menu.")
+        print("Data cannot be empty.")
         return
 
-    
     try:
-        box_size = input("Enter box size (Press Enter for default: 10): ")
-        box_size = int(box_size) if box_size else 10
-        
-        border = input("Enter border thickness (Press Enter for default: 4): ")
-        border = int(border) if border else 4
+        box_size_input = input("Enter box size (default: 10): ").strip()
+        box_size = int(box_size_input) if box_size_input else 10
+
+        border_input = input("Enter border thickness (default: 4): ").strip()
+        border = int(border_input) if border_input else 4
     except ValueError:
-        print("Invalid number entered. Using default sizes.")
+        print("Invalid number entered. Using defaults.")
         box_size = 10
         border = 4
 
-    # Color customization
-    fill_color = input("Enter QR code color (e.g., 'black', 'blue', '#FF0000' - default 'black'): ").strip() or "black"
-    back_color = input("Enter background color (e.g., 'white', 'yellow' - default 'white'): ").strip() or "white"
-    
-    filename = input("Enter the output filename (e.g., custom_qr.png): ").strip()
+    fill_color = input("Enter QR color (default 'black'): ").strip() or "black"
+    back_color = input("Enter background color (default 'white'): ").strip() or "white"
+
+    filename = input("Enter filename (default: custom_qr.png): ").strip()
     if not filename:
         filename = "custom_qr.png"
-    if not filename.endswith('.png'):
-        filename += '.png'
+    if not filename.endswith(".png"):
+        filename += ".png"
 
-    # Setup QR Code object with High Error Correction (H)
     qr = qrcode.QRCode(
-        version=1, # Auto-scales based on data length
+        version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_H,
         box_size=box_size,
         border=border,
@@ -63,40 +55,42 @@ def generate_custom_qr():
     qr.add_data(data)
     qr.make(fit=True)
 
-    print("Generating...")
     try:
-        # Apply colors and generate image
         img = qr.make_image(fill_color=fill_color, back_color=back_color)
         img.save(filename)
-        print(f"Success! Custom QR code saved as '{filename}' in the current directory.")
+        print(f"Saved to {filename}")
     except Exception as e:
-        print(f"Error generating QR code. Please ensure your color names/hex codes are valid. Error details: {e}")
+        print(f"Error: {e}")
+
 
 def main():
-    """Main menu loop."""
-    
+    name = "User"
     while True:
-        print("\n" + "="*35)
-        print("   🚀 ADVANCED QR CODE MAKER 🚀")
-        print("="*35)
-        print("1. Create a Basic QR Code (Fast)")
-        print("2. Create a Custom QR Code (Colors & Size)")
-        
+        print("\n" + "=" * 30)
+        print(f"Welcome, {name}")
+        print("=" * 30)
+        print("a. Set name")
+        print("1. Basic QR Code")
+        print("2. Custom QR Code")
         print("3. Exit")
-        print("="*35)
-        
-        choice = input("Select an option (1-4): ").strip()
-        
-        if choice == '1':
-            generate_basic_qr()
-        elif choice == '2':
-            generate_custom_qr()
+        print("=" * 30)
 
-        elif choice == '3':
-            print("\nExiting program. Have a great day!")
-            sys.exit()
+        choice = input("Select an option: ").strip()
+
+        if choice == "a":
+            entered_name = input("Enter your name: ").strip()
+            if entered_name:
+                name = entered_name
+        elif choice == "1":
+            generate_basic_qr()
+        elif choice == "2":
+            generate_custom_qr()
+        elif choice == "3":
+            print("Exiting.")
+            break
         else:
-            print("\nInvalid choice. Please type a number between 1 and 4.")
+            print("Invalid choice.")
+
 
 if __name__ == "__main__":
     main()
