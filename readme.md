@@ -27,4 +27,8 @@ Install dependencies:
 pip install qrcode[pil]
 
 
-
+---
+## Usage
+Run the script:
+```bash
+python app.py
