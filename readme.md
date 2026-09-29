@@ -1,4 +1,5 @@
 # QR Code Generator (Python)
+-Made by Abheesht Yadav 26BCE11333
 
 A simple command‑line tool to generate QR codes in two modes:
 - **Basic QR Code**: Quick generation with default settings.
