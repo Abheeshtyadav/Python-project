@@ -66,14 +66,14 @@ def generate_custom_qr():
 def main():
     name = "User"
     while True:
-        print("\n" + "=" * 30)
-        print(f"Welcome, {name}")
-        print("=" * 30)
+        
+        print(f"-----Welcome, {name}-------")
+        
         print("a. Set name")
         print("1. Basic QR Code")
         print("2. Custom QR Code")
         print("3. Exit")
-        print("=" * 30)
+        
 
         choice = input("Select an option: ").strip()
 
