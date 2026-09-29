@@ -25,15 +25,17 @@ A simple command‑line tool to generate QR codes in two modes:
 Install dependencies:
 ```bash
 pip install qrcode[pil]
+```
 
-Usage
+## Usage
+- Run the script:
 
-Run the script:
-
+```bash
 python app.py
+```
 
 You’ll see a menu like:
-
+```text
 ==============================
 Welcome, User
 ==============================
@@ -43,45 +45,4 @@ a. Set name
 3. Exit
 ==============================
 Select an option:
-
-Basic QR Code
-
-1. Choose option "1"
-2. Enter the text/URL
-3. Provide a filename (or press Enter for default "basic_qr.png")
-4. The QR code will be saved
-
-Custom QR Code
-
-1. Choose option "2"
-2. Enter the text/URL
-3. Customize box size, border thickness, fill color, and background color
-4. Provide a filename (or press Enter for default "custom_qr.png")
-5. The QR code will be saved
-
-Example
-
-Select an option: 1
-Enter the URL or text: https://github.com
-Enter filename (default: basic_qr.png): github_qr
-Saved to github_qr.png
-
-Project Structure
-
-project/
-│
-├── app.py          # Main script
-├── README.md       # Documentation
-└── qr_codes/       # (Optional) store generated QR codes
-
-Notes
-
-Filenames automatically append .png if missing.
-
-Empty input for text/URL will cancel the operation.
-
-Invalid numeric inputs for custom settings fall back to defaults.
-
-License
-
-This project is open‑source and free to use under the MIT License.
+```
