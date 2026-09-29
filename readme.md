@@ -31,7 +31,7 @@ pip install qrcode[pil]
 - Run the script:
 
 ```bash
-python app.py
+python main.py
 ```
 
 You’ll see a menu like:
