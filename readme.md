@@ -37,9 +37,7 @@ python main.py
 
 You’ll see a menu like:
 ```text
-==============================
-Welcome, User
-==============================
+-----Welcome, User-------
 a. Set name
 1. Basic QR Code
 2. Custom QR Code
