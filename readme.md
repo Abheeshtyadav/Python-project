@@ -47,7 +47,7 @@ a. Set name
 Select an option:
 ```
 
-If you input a it will as you to enter the name and then in place of User it will show your name
-If you input 1 it will ask you a site and generate a basic qr code
-if you input 2 it will ask you to enter a site and various customization options like colour and size of qr code
-on pressing 3 it will exit the program
+ - If you input a it will as you to enter the name and then in place of User it will show your name 
+ - If you input 1 it will ask you a site and generate a basic qr code
+ - if you input 2 it will ask you to enter a site and various customization options like colour and size of qr code
+ - on pressing 3 it will exit the program
